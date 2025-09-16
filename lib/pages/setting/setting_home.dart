@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../theme/theme_app.dart';
 
 class SettingHome extends StatelessWidget {
   const SettingHome({Key? key}) : super(key: key);
@@ -63,7 +65,7 @@ class SettingHome extends StatelessWidget {
               subtitle: Text('Personaliza colores y aspecto', style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color)),
               trailing: Icon(Icons.arrow_forward_ios, color: Theme.of(context).colorScheme.primary),
               onTap: () {
-                // Acción para cambiar tema
+                Provider.of<AppTheme>(context, listen: false).toggleTheme();
               },
             ),
           ),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'pages/splash/splash_app.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'pages/splash/splash_app.dart';
 import 'theme/theme_app.dart';
