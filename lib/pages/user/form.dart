@@ -51,7 +51,7 @@ class _UserFormScreenState extends State<UserFormScreen> {
           child: ListView(
             children: [
               Image.asset(
-                'assets/img/logos/stamp.webp',
+                'assets/img/logos/logopa.png',
                 height: 100,
               ),
               const SizedBox(height: 20),

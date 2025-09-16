@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../theme/widgets/appbar.dart';
-import '../../theme/widgets/navigation_drawer.dart';
-import '../../theme/widgets/navigation_bottom.dart';
+import '../../widgets/appbar.dart';
+import '../../widgets/navigation_drawer.dart';
+import '../../widgets/navigation_bottom.dart';
 import '../user/user.dart';
+import '../auth/change_password.dart';
 import '../setting/setting_home.dart';
-// import '../auth/login.dart'; // Comentado porque no existe o genera error
+import '../auth/login.dart';
 
 class HomeScreen extends StatefulWidget {
   final String username;
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _pages = [
       HomeContent(username: widget.username),
       UserScreen(username: widget.username, password: widget.password),
-      const SettingHome(), // Reemplazado ChangePasswordScreen por SettingHome
+      const SettingHome(),  //Reemplazado ChangePasswordScreen por SettingHome
     ];
   }
 
@@ -46,12 +47,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _logout() {
-    // Navigator.pushAndRemoveUntil(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => const LoginScreen()),
-    //   (route) => false,
-    // );
-    // Comentado porque LoginScreen no existe o genera error
+     Navigator.pushAndRemoveUntil(
+       context,
+       MaterialPageRoute(builder: (context) => const LoginScreen()),
+       (route) => false,
+     );
   }
 
   @override
@@ -113,46 +113,50 @@ class HomeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '¡Bienvenido, $username!',
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 20),
-          const Card(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '¡Bienvenido, $username!',
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+          Card(
+            color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  Icon(Icons.home, size: 50, color: Colors.blue),
-                  SizedBox(height: 10),
-                  Text('Esta es la pantalla principal de la aplicación'),
-                  SizedBox(height: 10),
+                  Icon(Icons.home, size: 50, color: Theme.of(context).colorScheme.primary),
+                  const SizedBox(height: 10),
+                  const Text('Esta es la pantalla principal de la aplicación'),
+                  const SizedBox(height: 10),
                   Text(
                     'Usa el menú lateral o la barra de navegación inferior para explorar las diferentes secciones.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color),
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(height: 20),
-          GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            children: [
-              _buildFeatureCard(Icons.person, 'Perfil', Colors.blue),
-              _buildFeatureCard(Icons.settings, 'Configuración', Colors.green),
-              _buildFeatureCard(Icons.notifications, 'Notificaciones', Colors.orange),
-              _buildFeatureCard(Icons.help, 'Ayuda', Colors.purple),
-            ],
-          ),
-        ],
+            const SizedBox(height: 20),
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              children: [
+                _buildFeatureCard(Icons.person, 'Perfil', Colors.blue),
+                _buildFeatureCard(Icons.settings, 'Configuración', Colors.green),
+                _buildFeatureCard(Icons.notifications, 'Notificaciones', Colors.orange),
+                _buildFeatureCard(Icons.help, 'Ayuda', Colors.purple),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

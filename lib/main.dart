@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pages/splash/splash_app.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'pages/splash/splash_app.dart';
+import 'theme/theme_app.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +14,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (_) => AppTheme(),
+      child: Consumer<AppTheme>(
+        builder: (context, appTheme, _) {
+          return MaterialApp(
+            title: 'Clash Royale',
+            theme: appTheme.currentTheme,
+            home: const SplashScreen(),
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
-      home: const SplashScreen(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }

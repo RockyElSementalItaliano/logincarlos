@@ -12,60 +12,68 @@ class SettingHome extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          const Text(
+          Text(
             'Cuenta',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).textTheme.titleLarge?.color,
+            ),
           ),
           const SizedBox(height: 8),
           Card(
-            color: Colors.grey[200],
+            color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
             child: ListTile(
-              leading: const Icon(Icons.email_outlined),
-              title: const Text('Actualizar Correo'),
-              subtitle: const Text('Modifica tu dirección de correo electrónico'),
-              trailing: const Icon(Icons.arrow_forward_ios),
+              leading: Icon(Icons.email_outlined, color: Theme.of(context).colorScheme.primary),
+              title: Text('Actualizar Correo', style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color)),
+              subtitle: Text('Modifica tu dirección de correo electrónico', style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color)),
+              trailing: Icon(Icons.arrow_forward_ios, color: Theme.of(context).colorScheme.primary),
               onTap: () {
                 // Acción para actualizar correo
               },
             ),
           ),
           Card(
-            color: Colors.grey[200],
+            color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
             child: ListTile(
-              leading: const Icon(Icons.lock_outline),
-              title: const Text('Cambiar Contraseña'),
-              subtitle: const Text('Establece una nueva contraseña segura'),
-              trailing: const Icon(Icons.arrow_forward_ios),
+              leading: Icon(Icons.lock_outline, color: Theme.of(context).colorScheme.primary),
+              title: Text('Cambiar Contraseña', style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color)),
+              subtitle: Text('Establece una nueva contraseña segura', style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color)),
+              trailing: Icon(Icons.arrow_forward_ios, color: Theme.of(context).colorScheme.primary),
               onTap: () {
                 // Acción para cambiar contraseña
               },
             ),
           ),
           const SizedBox(height: 24),
-          const Text(
+          Text(
             'Apariencia',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).textTheme.titleLarge?.color,
+            ),
           ),
           const SizedBox(height: 8),
           Card(
-            color: Colors.grey[200],
+            color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
             child: ListTile(
-              leading: const Icon(Icons.palette_outlined),
-              title: const Text('Tema de la App'),
-              subtitle: const Text('Personaliza colores y aspecto'),
-              trailing: const Icon(Icons.arrow_forward_ios),
+              leading: Icon(Icons.palette_outlined, color: Theme.of(context).colorScheme.primary),
+              title: Text('Tema de la App', style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color)),
+              subtitle: Text('Personaliza colores y aspecto', style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color)),
+              trailing: Icon(Icons.arrow_forward_ios, color: Theme.of(context).colorScheme.primary),
               onTap: () {
                 // Acción para cambiar tema
               },
             ),
           ),
           Card(
-            color: Colors.grey[200],
+            color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
             child: ListTile(
-              leading: const Icon(Icons.language_outlined),
-              title: const Text('Idioma'),
-              subtitle: const Text('Selecciona el idioma de la aplicación'),
-              trailing: const Icon(Icons.arrow_forward_ios),
+              leading: Icon(Icons.language_outlined, color: Theme.of(context).colorScheme.primary),
+              title: Text('Idioma', style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color)),
+              subtitle: Text('Selecciona el idioma de la aplicación', style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color)),
+              trailing: Icon(Icons.arrow_forward_ios, color: Theme.of(context).colorScheme.primary),
               onTap: () {
                 // Acción para cambiar idioma
               },

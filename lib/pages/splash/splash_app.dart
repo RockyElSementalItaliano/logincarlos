@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 28, 128, 158),
+      backgroundColor: const Color(0xFFFF5252),
       extendBodyBehindAppBar: true,
       body: Center(
         child: ScaleTransition(
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
               const SizedBox(height: 20),
               const Text(
-                'Mi App Flutter',
+                'Desarrollo Flutter',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

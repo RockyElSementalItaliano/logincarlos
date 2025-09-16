@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
-class AppTheme {
+class AppTheme extends ChangeNotifier {
+  ThemeData _currentTheme = lightTheme;
+
   static final ThemeData lightTheme = ThemeData(
-    primaryColor: Colors.blue,
+    primaryColor: const Color(0xFF1E40FF), // Azul
     colorScheme: const ColorScheme.light(
-      primary: Colors.blue,
-      secondary: Colors.green,
+      primary: Color(0xFF1E40FF), // Azul
+      secondary: Color(0xFF7A9B1F), // Verde Oliva
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.blue,
+      backgroundColor: Color(0xFF1E40FF),
       foregroundColor: Colors.white,
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: Colors.blue,
+      backgroundColor: Color(0xFF1E40FF),
       foregroundColor: Colors.white,
     ),
     textTheme: const TextTheme(
@@ -29,14 +31,25 @@ class AppTheme {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    primaryColor: Colors.blueGrey,
+    primaryColor: const Color(0xFF1F6F61), // Verde Azulado
     colorScheme: const ColorScheme.dark(
-      primary: Colors.blueGrey,
-      secondary: Colors.green,
+      primary: Color(0xFF1F6F61), // Verde Azulado
+      secondary: Color(0xFFB42D9C), // Magenta
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Color(0xFF1F6F61),
       foregroundColor: Colors.white,
     ),
   );
+
+  ThemeData get currentTheme => _currentTheme;
+
+  void toggleTheme() {
+    if (_currentTheme == lightTheme) {
+      _currentTheme = darkTheme;
+    } else {
+      _currentTheme = lightTheme;
+    }
+    notifyListeners();
+  }
 }

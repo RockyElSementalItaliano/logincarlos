@@ -30,13 +30,13 @@ class CustomDrawer extends StatelessWidget {
   Widget _buildHeader(BuildContext context) {
     return DrawerHeader(
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.primary,
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Theme.of(context).primaryColor,
-            Theme.of(context).primaryColor.withOpacity(0.8),
+            Theme.of(context).colorScheme.primary,
+            Theme.of(context).colorScheme.primary.withOpacity(0.8),
           ],
         ),
       ),
@@ -134,34 +134,34 @@ class CustomDrawer extends StatelessWidget {
     return ListTile(
       leading: Icon(
         icon,
-        color: isSelected ? Theme.of(context).primaryColor : Colors.grey[700],
+        color: isSelected ? Theme.of(context).colorScheme.primary : Colors.grey[700],
       ),
       title: Text(
         title,
         style: TextStyle(
           fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-          color: isSelected ? Theme.of(context).primaryColor : Colors.black87,
+          color: isSelected ? Theme.of(context).colorScheme.primary : Colors.black87,
         ),
       ),
       trailing: isSelected
           ? Icon(
               Icons.arrow_forward,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               size: 20,
             )
           : null,
       onTap: () => onItemSelected(index),
       selected: isSelected,
-      selectedTileColor: Theme.of(context).primaryColor.withOpacity(0.1),
+      selectedTileColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
     );
   }
 
   Widget _buildLogoutTile(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.logout, color: Colors.red),
-      title: const Text(
+      leading: Icon(Icons.logout, color: Theme.of(context).colorScheme.secondary),
+      title: Text(
         'Cerrar Sesión',
-        style: TextStyle(color: Colors.red),
+        style: TextStyle(color: Theme.of(context).colorScheme.secondary),
       ),
       onTap: () {
         Navigator.pop(context); // Cerrar el drawer
